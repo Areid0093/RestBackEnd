@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
-    before_action :authorized_user?
-  
  
+  
+  
     
     def login!
       session[:user_id] = @user.id
