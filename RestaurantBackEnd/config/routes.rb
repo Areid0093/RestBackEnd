@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :favorites
   resources :reviews
   resources :restaurants
+  resources :users
   
   
   post '/login', to: 'sessions#create'
