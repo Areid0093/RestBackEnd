@@ -1,19 +1,19 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
-    # def index
-    #     @users = User.all
-    #     if @users
-    #       render json: {
-    #         users: @users
-    #       }
-    #     else
-    #       render json: {
-    #         status: 500,
-    #         errors: ['no users found']
-    #       }
-    #     end
-    # end
+    def index
+        @users = User.all
+        if @users
+          render json: {
+            users: @users
+          }
+        else
+          render json: {
+            status: 500,
+            errors: ['no users found']
+          }
+        end
+    end
 
 
     def show
@@ -39,9 +39,9 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         if @user.valid?
           @token = encode_token({ user_id: @user.id })
-          render json: { user: @user, jwt: @token }, status: :created
+          render json: { user: @user, jwt: @token, status: :created }
         else
-          render json: { error: 'failed to create user' }, status: :not_acceptable
+          render json: { error: 'failed to create user', status: :not_acceptable}
         end
       end
       
