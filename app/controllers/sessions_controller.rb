@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       @user = User.find_by(email: session_params[:email])
       if @user && @user.authenticate(session_params[:password])
         token = encode_token({ user_id: @user.id })
-        render json: { user: @user, jwt: token }, status: :accepted
+        render json: { user: @user, jwt: token, logged_in: true}, status: :accepted
       else
         render json: { message: 'Invalid username or password' }, status: :unauthorized
       end
@@ -34,6 +34,6 @@ class SessionsController < ApplicationController
       end
     private
     def session_params
-        params.require(:user).permit(:username, :email, :password)
+        params.require(:user).permit(:username, :email, :password, :logged_in)
       end
     end

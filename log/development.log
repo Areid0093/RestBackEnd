@@ -1225,3 +1225,584 @@ Filter chain halted as :authorized rendered or redirected
 Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 232)
 
 
+Started POST "/users" for ::1 at 2019-12-02 16:04:29 -0600
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joelle@joelle.joelle", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+[31mUnpermitted parameter: :status[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "joelle"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joelle@joelle.joelle"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "joelle"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joelle@joelle.joelle"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 282ms (Views: 1.0ms | ActiveRecord: 6.6ms | Allocations: 185962)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:05:14 -0600
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 625)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (2.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/logged_in" for ::1 at 2019-12-02 16:05:56 -0600
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 625)
+
+
+Started POST "/users" for ::1 at 2019-12-02 16:06:02 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"a", "email"=>"a@a.a", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+[31mUnpermitted parameter: :status[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "a"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "a"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 293ms (Views: 0.3ms | ActiveRecord: 7.5ms | Allocations: 185573)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:06:30 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 206)
+
+
+Started POST "/users" for ::1 at 2019-12-02 16:06:47 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+[31mUnpermitted parameter: :status[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "joelle"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "joelle"], ["password_digest", "$2a$12$uuQDaZvvWi63pWNAyL6CMuJeRDNtu1W4QmI7.2Hzcs6aRYAIeJWdi"], ["email", "joellenhelm@gmail.com"], ["created_at", "2019-12-02 22:06:47.249272"], ["updated_at", "2019-12-02 22:06:47.249272"]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "joelle"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "joellenhelm@gmail.com"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 199ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 6553)
+
+
+Started DELETE "/logout" for ::1 at 2019-12-02 16:06:52 -0600
+Processing by SessionsController#destroy as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 232)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:08:00 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:08:09 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 202 Accepted in 197ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1274)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:08:54 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 202 Accepted in 199ms (Views: 0.6ms | ActiveRecord: 3.9ms | Allocations: 6717)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:08:58 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 220)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:09:04 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 202 Accepted in 191ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1064)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:09:56 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:10:02 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 202 Accepted in 191ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1064)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:12:56 -0600
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+Completed 202 Accepted in 202ms (Views: 1.1ms | ActiveRecord: 4.9ms | Allocations: 8079)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:15:15 -0600
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 625)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:15:59 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+Completed 202 Accepted in 220ms (Views: 0.6ms | ActiveRecord: 5.4ms | Allocations: 7706)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:17:00 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 358)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:17:07 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 202 Accepted in 198ms (Views: 0.5ms | ActiveRecord: 3.6ms | Allocations: 6545)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:18:00 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 206)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:18:07 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 202 Accepted in 206ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1069)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:19:20 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:19:28 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 202 Accepted in 211ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1065)
+
+
+Started POST "/users" for ::1 at 2019-12-02 16:20:24 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"ljfsdkfjlk", "email"=>"sdlkfjkjs@lsfk.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+Completed 500 Internal Server Error in 192ms (ActiveRecord: 0.0ms | Allocations: 418)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'status' for User.):
+  
+app/controllers/users_controller.rb:39:in `create'
+Started POST "/users" for ::1 at 2019-12-02 16:21:59 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"ljfsdkfjlk", "email"=>"sdlkfjkjs@lsfk.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+Completed 500 Internal Server Error in 197ms (ActiveRecord: 4.2ms | Allocations: 4020)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'status' for User.):
+  
+app/controllers/users_controller.rb:39:in `create'
+Started GET "/logged_in" for ::1 at 2019-12-02 16:23:19 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 363)
+
+
+Started POST "/users" for ::1 at 2019-12-02 16:23:31 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"ldkfj", "email"=>"lkdsjflkfsj@aol.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 4.4ms | Allocations: 4031)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'status' for User.):
+  
+app/controllers/users_controller.rb:39:in `create'
+Started GET "/logged_in" for ::1 at 2019-12-02 16:24:22 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/users" for ::1 at 2019-12-02 16:24:32 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"jfkjskfjsdlkfjs", "email"=>"lskdjfklsdjfklsj@lskj.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+Completed 500 Internal Server Error in 189ms (ActiveRecord: 0.0ms | Allocations: 306)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'status' for User.):
+  
+app/controllers/users_controller.rb:39:in `create'
+Started POST "/users" for ::1 at 2019-12-02 16:25:21 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"jfkjskfjsdlkfjs", "email"=>"lskdjfklsdjfklsj@lskj.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+Completed 500 Internal Server Error in 197ms (ActiveRecord: 3.9ms | Allocations: 4020)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'status' for User.):
+  
+app/controllers/users_controller.rb:39:in `create'
+Started POST "/users" for ::1 at 2019-12-02 16:25:54 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"jfkjskfjsdlkfjs", "email"=>"lskdjfklsdjfklsj@lskj.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+[31mUnpermitted parameter: :status[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "jfkjskfjsdlkfjs"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lskdjfklsdjfklsj@lskj.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "jfkjskfjsdlkfjs"], ["password_digest", "$2a$12$pwMaPUZEccxPkV9zYMItu.umn7p4XEZpylBHFvzmX/B4SfGp.Ks6C"], ["email", "lskdjfklsdjfklsj@lskj.com"], ["created_at", "2019-12-02 22:25:54.775025"], ["updated_at", "2019-12-02 22:25:54.775025"]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "jfkjskfjsdlkfjs"], ["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "lskdjfklsdjfklsj@lskj.com"], ["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 214ms (Views: 0.5ms | ActiveRecord: 5.7ms | Allocations: 10693)
+
+
+Started DELETE "/logout" for ::1 at 2019-12-02 16:26:05 -0600
+Processing by SessionsController#destroy as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 231)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:26:12 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 202 Accepted in 195ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1217)
+
+
+Started DELETE "/logout" for ::1 at 2019-12-02 16:26:23 -0600
+Processing by SessionsController#destroy as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:31:50 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 202 Accepted in 190ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1082)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:33:36 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 220)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:33:41 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:33:45 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:33:46 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:33:49 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:33:55 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 202 Accepted in 195ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1090)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:36:46 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:38:09 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:39:22 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:39:57 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:40:24 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:40:41 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:40:44 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:40:54 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 202 Accepted in 191ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1082)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:43:18 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:43:28 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:44:07 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 202 Accepted in 193ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1082)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:44:37 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:44:46 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:46:03 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:46:14 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:46:20 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 202 Accepted in 193ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 1085)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-02 16:47:40 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:47:47 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 202 Accepted in 197ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1082)
+
+
+Started DELETE "/logout" for ::1 at 2019-12-02 16:48:19 -0600
+Processing by SessionsController#destroy as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started POST "/login" for ::1 at 2019-12-02 16:48:59 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"joelle", "email"=>"joellenhelm@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "joellenhelm@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 202 Accepted in 196ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1082)
+
+
+Started DELETE "/logout" for ::1 at 2019-12-02 16:49:17 -0600
+Processing by SessionsController#destroy as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
