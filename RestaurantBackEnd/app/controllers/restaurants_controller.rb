@@ -1,8 +1,11 @@
 class RestaurantsController < ApplicationController
 
     def create 
-        Restaurant.create(restaurant_params)
+        new_restaurant = Restaurant.create(restaurant_params)
+        render json: new_restaurant
     end
+
+    
 
 
 
