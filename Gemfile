@@ -7,6 +7,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'google-api-client', '~> 0.34'
 
+# gem 'rest-client', '~> 1.8'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
 # Use postgresql as the database for Active Record
