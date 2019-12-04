@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_153352) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "restaurant_id"
+    t.string "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_153352) do
   create_table "reviews", force: :cascade do |t|
     t.string "comment"
     t.integer "user_id"
-    t.integer "resaurant_id"
+    t.string "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
