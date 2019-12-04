@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+    skip_before_action :authorized
 
     def create 
         new_restaurant = Restaurant.create(restaurant_params)

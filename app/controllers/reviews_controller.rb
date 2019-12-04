@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+    skip_before_action :authorized
 
     def index
         reviews = Review.all
@@ -21,14 +21,14 @@ class ReviewsController < ApplicationController
 
     def update
         review = Review.find(params['id']).update(reviews_params)
-        render json: reviews
+        render json: review
     end
 
 
     private
 
     def reviews_params
-        params.require(:reviews).permit(:comment, :user, :restaurant)
+        params.require(:review).permit(:comment, :user_id, :restaurant_id)
     end
 
     def reviews_serializer
