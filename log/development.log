@@ -7272,3 +7272,299 @@ Migrating to CreateFavorites (20191202153352)
   [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7195500081873485340)[0m
   [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/logged_in" for ::1 at 2019-12-04 16:04:42 -0600
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 625)
+
+
+Started POST "/login" for ::1 at 2019-12-04 16:04:47 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (5.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 401 Unauthorized in 38ms (Views: 0.8ms | ActiveRecord: 9.0ms | Allocations: 3951)
+
+
+Started POST "/login" for ::1 at 2019-12-04 16:04:49 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 401 Unauthorized in 3ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 802)
+
+
+Started POST "/users" for ::1 at 2019-12-04 16:04:58 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+[31mUnpermitted parameter: :status[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Alec321"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Alec321"], ["password_digest", "$2a$12$SfBV3qu/ERr8KjpLa.t9JOCr7bW4R4mJ5rdTN0.M.zcN4B3xtwx1O"], ["email", "alec@alec.com"], ["created_at", "2019-12-04 22:04:58.733106"], ["updated_at", "2019-12-04 22:04:58.733106"]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Alec321"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "alec@alec.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.29ms)
+Completed 200 OK in 321ms (Views: 0.7ms | ActiveRecord: 19.7ms | Allocations: 10450)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 16:05:09 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mRestaurant Load (5.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.35ms)
+Completed 200 OK in 671ms (Views: 1.6ms | ActiveRecord: 23.2ms | Allocations: 186921)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 16:05:37 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 16:05:40 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-04 16:05:44 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.44ms)
+Completed 202 Accepted in 293ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 1084)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 16:05:53 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.2ms)
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 1.1ms | Allocations: 4052)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 16:06:35 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.96ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 361)
+
+
+Started POST "/login" for ::1 at 2019-12-04 16:06:41 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.49ms)
+Completed 202 Accepted in 311ms (Views: 1.3ms | ActiveRecord: 6.7ms | Allocations: 6144)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 16:06:47 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.21ms)
+Completed 200 OK in 66ms (Views: 1.1ms | ActiveRecord: 22.0ms | Allocations: 9006)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 16:07:26 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.2ms)
+Completed 200 OK in 77ms (Views: 1.4ms | ActiveRecord: 26.7ms | Allocations: 13301)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 16:07:26 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.2ms)
+Completed 200 OK in 12ms (Views: 0.8ms | ActiveRecord: 1.6ms | Allocations: 4054)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 16:08:34 -0600
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.17ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 625)
+
+
+Started POST "/login" for ::1 at 2019-12-04 16:08:37 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.74ms)
+Completed 202 Accepted in 329ms (Views: 1.5ms | ActiveRecord: 8.9ms | Allocations: 7167)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 16:08:43 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.36ms)
+Completed 200 OK in 688ms (Views: 2.4ms | ActiveRecord: 22.1ms | Allocations: 185268)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 16:09:33 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 362)
+
+
+Started POST "/login" for ::1 at 2019-12-04 16:09:39 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.38ms)
+Completed 202 Accepted in 309ms (Views: 1.0ms | ActiveRecord: 7.2ms | Allocations: 6081)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 16:09:44 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mFavorite Create (4.7ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["restaurant_id", "ChIJvUKiavpzxokRa6FSEChrl84"], ["created_at", "2019-12-04 22:09:44.429624"], ["updated_at", "2019-12-04 22:09:44.429624"]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.42ms)
+Completed 200 OK in 41ms (Views: 1.7ms | ActiveRecord: 19.2ms | Allocations: 6740)
+
+
+  [1m[36mFavorite Load (0.5ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/logged_in" for ::1 at 2019-12-04 16:11:51 -0600
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.36ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 625)
+
+
+Started POST "/login" for ::1 at 2019-12-04 16:11:56 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"alec@alec.com", "email"=>"123", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"alec@alec.com", "email"=>"123", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "123"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 401 Unauthorized in 24ms (Views: 0.5ms | ActiveRecord: 3.6ms | Allocations: 3302)
+
+
+Started POST "/login" for ::1 at 2019-12-04 16:12:00 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"alec@alec.com", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.42ms)
+Completed 202 Accepted in 301ms (Views: 0.9ms | ActiveRecord: 5.9ms | Allocations: 4667)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 16:12:14 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mFavorite Create (1.3ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["restaurant_id", "ChIJvUKiavpzxokRa6FSEChrl84"], ["created_at", "2019-12-04 22:12:14.736919"], ["updated_at", "2019-12-04 22:12:14.736919"]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.31ms)
+Completed 200 OK in 48ms (Views: 1.3ms | ActiveRecord: 13.7ms | Allocations: 8051)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 16:12:28 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mFavorite Create (1.5ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["restaurant_id", "ChIJvUKiavpzxokRa6FSEChrl84"], ["created_at", "2019-12-04 22:12:28.753775"], ["updated_at", "2019-12-04 22:12:28.753775"]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.55ms)
+Completed 200 OK in 19ms (Views: 1.4ms | ActiveRecord: 5.8ms | Allocations: 3559)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 16:13:07 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 16:13:25 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
