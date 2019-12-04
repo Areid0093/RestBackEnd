@@ -28,10 +28,16 @@ class ReviewsController < ApplicationController
     private
 
     def reviews_params
-        params.require(:review).permit(:comment, :user_id, :restaurant_id)
+        params.require(:review).permit(:comment, :user_id, :restaurant_id, {:username => []})
     end
 
     def reviews_serializer
+        {
+            :only => [:review, :comment, :user_id, :restaurant_id],
 
+            :include => {:user => {
+                :only => [:username]
+            }}
+        }
     end
 end

@@ -31,7 +31,7 @@ class FavoritesController < ApplicationController
     private
 
     def favorites_params
-        params.require(:favorites).permit(:user, :restaurant)
+        params.require(:favorite).permit(:user_id, :restaurant_id, {:username => []})
     end
 
     def favorites_serializer
