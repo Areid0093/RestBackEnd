@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        render json: Review.find(params['id']).to_json(reviews_serializer)
+        render json: Review.find(params['id']).destroy
     end
 
     def update
