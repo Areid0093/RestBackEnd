@@ -8062,3 +8062,1290 @@ Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocati
 
 
 
+Started GET "/logged_in" for ::1 at 2019-12-04 17:16:21 -0600
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 625)
+
+
+Started POST "/login" for ::1 at 2019-12-04 17:17:46 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.37ms)
+Completed 202 Accepted in 322ms (Views: 0.8ms | ActiveRecord: 9.7ms | Allocations: 7168)
+
+
+Started GET "/reviews" for ::1 at 2019-12-04 17:17:52 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 59ms (Views: 0.3ms | ActiveRecord: 7.8ms | Allocations: 12482)
+
+
+Started POST "/reviews" for ::1 at 2019-12-04 17:17:58 -0600
+Processing by ReviewsController#create as JSON
+  Parameters: {"comment"=>"derp", "user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "review"=>{"comment"=>"derp", "user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/reviews" for ::1 at 2019-12-04 17:17:58 -0600
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+  [1m[36mUser Load (10.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+  [1m[36mReview Create (3.3ms)[0m  [1m[32mINSERT INTO "reviews" ("comment", "user_id", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "derp"], ["user_id", 1], ["restaurant_id", "ChIJvUKiavpzxokRa6FSEChrl84"], ["created_at", "2019-12-04 23:17:58.305619"], ["updated_at", "2019-12-04 23:17:58.305619"]]
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.47ms)
+Completed 200 OK in 32ms (Views: 2.0ms | ActiveRecord: 18.8ms | Allocations: 6171)
+
+
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (2.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 7660)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 17:18:57 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 206)
+
+
+Started POST "/login" for ::1 at 2019-12-04 17:19:36 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+Completed 202 Accepted in 286ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 1106)
+
+
+Started GET "/reviews" for ::1 at 2019-12-04 17:19:42 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (2.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 34ms (Views: 0.2ms | ActiveRecord: 4.4ms | Allocations: 7539)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 17:23:42 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-04 17:23:48 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 202 Accepted in 287ms (Views: 0.8ms | ActiveRecord: 0.4ms | Allocations: 1082)
+
+
+Started GET "/reviews" for ::1 at 2019-12-04 17:23:54 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 7539)
+
+
+Started POST "/favorites" for ::1 at 2019-12-04 17:23:59 -0600
+Processing by FavoritesController#create as JSON
+  Parameters: {"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "favorite"=>{"user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[36mFavorite Create (1.1ms)[0m  [1m[32mINSERT INTO "favorites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["restaurant_id", "ChIJvUKiavpzxokRa6FSEChrl84"], ["created_at", "2019-12-04 23:23:59.703249"], ["updated_at", "2019-12-04 23:23:59.703249"]]
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/favorites_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Favorite (0.27ms)
+Completed 200 OK in 28ms (Views: 1.2ms | ActiveRecord: 17.4ms | Allocations: 6571)
+
+
+Started POST "/reviews" for ::1 at 2019-12-04 17:24:01 -0600
+Processing by ReviewsController#create as JSON
+Started GET "/reviews" for ::1 at 2019-12-04 17:24:01 -0600
+  Parameters: {"comment"=>"derp", "user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "review"=>{"comment"=>"derp", "user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+  [1m[36mReview Create (3.2ms)[0m  [1m[32mINSERT INTO "reviews" ("comment", "user_id", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "derp"], ["user_id", 1], ["restaurant_id", "ChIJvUKiavpzxokRa6FSEChrl84"], ["created_at", "2019-12-04 23:24:01.389362"], ["updated_at", "2019-12-04 23:24:01.389362"]]
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.27ms)
+Completed 200 OK in 19ms (Views: 0.9ms | ActiveRecord: 6.6ms | Allocations: 3919)
+
+
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 62ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 8491)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 17:26:43 -0600
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 625)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 17:27:08 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.37ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 206)
+
+
+Started POST "/login" for ::1 at 2019-12-04 17:27:14 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.37ms)
+Completed 202 Accepted in 325ms (Views: 0.8ms | ActiveRecord: 14.3ms | Allocations: 7167)
+
+
+Started GET "/reviews" for ::1 at 2019-12-04 17:27:18 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 94ms (Views: 0.5ms | ActiveRecord: 13.2ms | Allocations: 14174)
+
+
+Started DELETE "/reviews/undefined" for ::1 at 2019-12-04 17:27:30 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mReview Load (1.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 404 Not Found in 6ms (ActiveRecord: 1.7ms | Allocations: 730)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=undefined):
+  
+app/controllers/reviews_controller.rb:19:in `destroy'
+Started GET "/logged_in" for ::1 at 2019-12-04 17:28:59 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 17:29:08 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-04 17:29:23 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.38ms)
+Completed 202 Accepted in 293ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1082)
+
+
+Started GET "/reviews" for ::1 at 2019-12-04 17:29:29 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (3.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 35ms (Views: 0.2ms | ActiveRecord: 5.7ms | Allocations: 8385)
+
+
+Started DELETE "/reviews/undefined" for ::1 at 2019-12-04 17:32:36 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mReview Load (6.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 404 Not Found in 8ms (ActiveRecord: 6.0ms | Allocations: 599)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=undefined):
+  
+app/controllers/reviews_controller.rb:19:in `destroy'
+Started GET "/logged_in" for ::1 at 2019-12-04 17:32:37 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-04 17:32:41 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.34ms)
+Completed 202 Accepted in 285ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1082)
+
+
+Started GET "/reviews" for ::1 at 2019-12-04 17:32:48 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 34ms (Views: 0.3ms | ActiveRecord: 4.6ms | Allocations: 8385)
+
+
+Started DELETE "/reviews/undefined" for ::1 at 2019-12-04 17:32:58 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mReview Load (1.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 404 Not Found in 3ms (ActiveRecord: 1.7ms | Allocations: 598)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=undefined):
+  
+app/controllers/reviews_controller.rb:19:in `destroy'
+Started GET "/logged_in" for ::1 at 2019-12-04 17:33:57 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 17:34:29 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-04 17:34:36 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 202 Accepted in 292ms (Views: 0.7ms | ActiveRecord: 0.8ms | Allocations: 1083)
+
+
+Started GET "/reviews" for ::1 at 2019-12-04 17:34:43 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 5.3ms | Allocations: 8385)
+
+
+Started DELETE "/reviews/undefined" for ::1 at 2019-12-04 17:34:44 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 613)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=undefined):
+  
+app/controllers/reviews_controller.rb:19:in `destroy'
+Started GET "/logged_in" for ::1 at 2019-12-04 17:35:14 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-04 17:35:18 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 202 Accepted in 293ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1081)
+
+
+Started GET "/reviews" for ::1 at 2019-12-04 17:35:24 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 46ms (Views: 0.2ms | ActiveRecord: 3.1ms | Allocations: 8389)
+
+
+Started DELETE "/reviews/undefined" for ::1 at 2019-12-04 17:35:26 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 598)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=undefined):
+  
+app/controllers/reviews_controller.rb:19:in `destroy'
+Started GET "/logged_in" for ::1 at 2019-12-04 17:36:16 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-04 17:36:23 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 202 Accepted in 285ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1081)
+
+
+Started GET "/reviews" for ::1 at 2019-12-04 17:36:29 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (2.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 34ms (Views: 0.6ms | ActiveRecord: 6.1ms | Allocations: 8388)
+
+
+Started DELETE "/reviews/undefined" for ::1 at 2019-12-04 17:36:30 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 598)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=undefined):
+  
+app/controllers/reviews_controller.rb:19:in `destroy'
+Started DELETE "/logout" for ::1 at 2019-12-04 17:38:43 -0600
+  [1m[35m (8.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#destroy as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 636)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-04 17:38:45 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 221)
+
+
+Started GET "/" for ::1 at 2019-12-05 09:34:04 -0600
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/alecreid/.rvm/gems/ruby-2.6.1/gems/railties-6.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/alecreid/.rvm/gems/ruby-2.6.1/gems/railties-6.0.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 19.6ms | Allocations: 317)
+Completed 200 OK in 47ms (Views: 32.9ms | ActiveRecord: 0.0ms | Allocations: 1606)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-05 09:34:06 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.36ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms | Allocations: 749)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:34:10 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (7.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.4ms)
+Completed 202 Accepted in 356ms (Views: 0.9ms | ActiveRecord: 29.8ms | Allocations: 7159)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:34:16 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 63ms (Views: 0.3ms | ActiveRecord: 7.5ms | Allocations: 14174)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:34:22 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Started POST "/reviews" for ::1 at 2019-12-05 09:34:22 -0600
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 47ms (Views: 0.5ms | ActiveRecord: 3.1ms | Allocations: 9419)
+
+
+Processing by ReviewsController#create as JSON
+  Parameters: {"comment"=>"derp", "user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84", "review"=>{"comment"=>"derp", "user_id"=>1, "restaurant_id"=>"ChIJvUKiavpzxokRa6FSEChrl84"}}
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+  [1m[36mReview Create (6.1ms)[0m  [1m[32mINSERT INTO "reviews" ("comment", "user_id", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "derp"], ["user_id", 1], ["restaurant_id", "ChIJvUKiavpzxokRa6FSEChrl84"], ["created_at", "2019-12-05 15:34:22.586767"], ["updated_at", "2019-12-05 15:34:22.586767"]]
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+  [1m[35m (11.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:14:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.83ms)
+Completed 200 OK in 36ms (Views: 2.4ms | ActiveRecord: 21.7ms | Allocations: 4086)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-05 09:36:15 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-05 09:37:02 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 206)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:37:10 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 202 Accepted in 287ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1086)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:37:15 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (6.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 43ms (Views: 0.4ms | ActiveRecord: 9.3ms | Allocations: 9248)
+
+
+Started DELETE "/reviews/undefined" for ::1 at 2019-12-05 09:37:17 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"undefined"}
+  [1m[36mReview Load (1.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 404 Not Found in 4ms (ActiveRecord: 1.2ms | Allocations: 711)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=undefined):
+  
+app/controllers/reviews_controller.rb:19:in `destroy'
+Started GET "/logged_in" for ::1 at 2019-12-05 09:37:54 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:38:04 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 202 Accepted in 289ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1082)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:38:09 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 32ms (Views: 0.3ms | ActiveRecord: 4.5ms | Allocations: 9231)
+
+
+Started DELETE "/reviews/1" for ::1 at 2019-12-05 09:38:10 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 744)
+
+
+Started DELETE "/reviews/1" for ::1 at 2019-12-05 09:38:12 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 743)
+
+
+Started DELETE "/reviews/2" for ::1 at 2019-12-05 09:38:24 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 743)
+
+
+Started DELETE "/reviews/3" for ::1 at 2019-12-05 09:38:25 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 743)
+
+
+Started DELETE "/logout" for ::1 at 2019-12-05 09:38:27 -0600
+Processing by SessionsController#destroy as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:38:39 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.29ms)
+Completed 202 Accepted in 286ms (Views: 0.8ms | ActiveRecord: 0.6ms | Allocations: 1082)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:38:44 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 30ms (Views: 0.5ms | ActiveRecord: 4.3ms | Allocations: 9231)
+
+
+Started DELETE "/reviews/1" for ::1 at 2019-12-05 09:38:45 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 743)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-05 09:43:08 -0600
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 625)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:43:13 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.73ms)
+Completed 202 Accepted in 320ms (Views: 1.3ms | ActiveRecord: 8.7ms | Allocations: 7168)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:43:19 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (2.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 129ms (Views: 0.3ms | ActiveRecord: 14.5ms | Allocations: 15020)
+
+
+Started DELETE "/reviews/1" for ::1 at 2019-12-05 09:43:20 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[36mReview Destroy (4.0ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.32ms)
+Completed 200 OK in 18ms (Views: 1.1ms | ActiveRecord: 8.7ms | Allocations: 2821)
+
+
+Started DELETE "/reviews/1" for ::1 at 2019-12-05 09:43:32 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mReview Load (3.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+Completed 404 Not Found in 6ms (ActiveRecord: 3.7ms | Allocations: 619)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=1):
+  
+app/controllers/reviews_controller.rb:19:in `destroy'
+Started DELETE "/reviews/2" for ::1 at 2019-12-05 09:43:35 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[36mReview Destroy (3.2ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.47ms)
+Completed 200 OK in 12ms (Views: 1.1ms | ActiveRecord: 6.3ms | Allocations: 2451)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-05 09:50:06 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 206)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:50:12 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.46ms)
+Completed 202 Accepted in 292ms (Views: 1.0ms | ActiveRecord: 0.8ms | Allocations: 1170)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:50:17 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (2.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 29ms (Views: 0.2ms | ActiveRecord: 4.5ms | Allocations: 7562)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-05 09:50:36 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:50:40 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+Completed 202 Accepted in 285ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1083)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:50:44 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (2.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 61ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 7543)
+
+
+Started DELETE "/reviews/3" for ::1 at 2019-12-05 09:50:46 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mReview Load (1.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[36mReview Destroy (1.1ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.59ms)
+Completed 200 OK in 15ms (Views: 1.4ms | ActiveRecord: 6.2ms | Allocations: 2454)
+
+
+Started GET "/logged_in" for ::1 at 2019-12-05 09:51:00 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 206)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:51:09 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.31ms)
+Completed 202 Accepted in 285ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 1082)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:51:13 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 6693)
+
+
+Started DELETE "/reviews/4" for ::1 at 2019-12-05 09:51:16 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[36mReview Destroy (0.5ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.31ms)
+Completed 200 OK in 12ms (Views: 1.9ms | ActiveRecord: 4.1ms | Allocations: 2451)
+
+
+Started DELETE "/reviews/5" for ::1 at 2019-12-05 09:51:58 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[36mReview Destroy (4.4ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.29ms)
+Completed 200 OK in 16ms (Views: 0.8ms | ActiveRecord: 10.5ms | Allocations: 2451)
+
+
+Started DELETE "/logout" for ::1 at 2019-12-05 09:52:02 -0600
+Processing by SessionsController#destroy as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started POST "/users" for ::1 at 2019-12-05 09:52:14 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"Derp", "email"=>"Derp@derp.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "status"=>"created"}}
+[31mUnpermitted parameter: :status[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Derp"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "Derp@derp.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Derp"], ["password_digest", "$2a$12$4Mwlpwq/W2pBkP0ZNuqhZOYoFvvjuLXrPQIlxAPVcgyiIg20Ro.jG"], ["email", "Derp@derp.com"], ["created_at", "2019-12-05 15:52:14.607803"], ["updated_at", "2019-12-05 15:52:14.607803"]]
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:39:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Derp"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "Derp@derp.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:40:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+Completed 200 OK in 302ms (Views: 0.7ms | ActiveRecord: 5.1ms | Allocations: 6783)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:52:19 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 5001)
+
+
+Started DELETE "/logout" for ::1 at 2019-12-05 09:52:47 -0600
+Processing by SessionsController#destroy as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:52:50 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 202 Accepted in 296ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1082)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:52:56 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 5001)
+
+
+Started DELETE "/reviews/6" for ::1 at 2019-12-05 09:52:57 -0600
+Processing by ReviewsController#destroy as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mReview Load (2.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[36mReview Destroy (1.2ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:19:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.55ms)
+Completed 200 OK in 17ms (Views: 2.0ms | ActiveRecord: 7.9ms | Allocations: 2451)
+
+
+Started PATCH "/reviews/undefined" for ::1 at 2019-12-05 09:53:28 -0600
+Processing by ReviewsController#update as JSON
+  Parameters: {"comment"=>"1234", "id"=>"undefined", "review"=>{"comment"=>"1234"}}
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.6ms | Allocations: 603)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=undefined):
+  
+app/controllers/reviews_controller.rb:23:in `update'
+Started PATCH "/reviews/undefined" for ::1 at 2019-12-05 09:53:36 -0600
+Processing by ReviewsController#update as JSON
+  Parameters: {"comment"=>"hello", "id"=>"undefined", "review"=>{"comment"=>"hello"}}
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms | Allocations: 601)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Review with 'id'=undefined):
+  
+app/controllers/reviews_controller.rb:23:in `update'
+Started GET "/logged_in" for ::1 at 2019-12-05 09:54:07 -0600
+Processing by ApplicationController#logged_in? as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started POST "/login" for ::1 at 2019-12-05 09:54:11 -0600
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"Alec321", "email"=>"alec@alec.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alec@alec.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 202 Accepted in 288ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1081)
+
+
+Started GET "/reviews" for ::1 at 2019-12-05 09:54:16 -0600
+Processing by ReviewsController#index as */*
+  [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:6:in `index'
+Completed 200 OK in 17ms (Views: 0.6ms | ActiveRecord: 5.5ms | Allocations: 4155)
+
+
+Started PATCH "/reviews/8" for ::1 at 2019-12-05 09:54:24 -0600
+Processing by ReviewsController#update as JSON
+  Parameters: {"comment"=>"hello", "id"=>"8", "review"=>{"comment"=>"hello"}}
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[35m (3.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[36mReview Update (14.6ms)[0m  [1m[33mUPDATE "reviews" SET "comment" = $1, "updated_at" = $2 WHERE "reviews"."id" = $3[0m  [["comment", "hello"], ["updated_at", "2019-12-05 15:54:24.743530"], ["id", 8]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with TrueClass (0.08ms)
+Completed 200 OK in 44ms (Views: 1.5ms | ActiveRecord: 27.2ms | Allocations: 4136)
+
+
+Started PATCH "/reviews/7" for ::1 at 2019-12-05 09:54:54 -0600
+Processing by ReviewsController#update as JSON
+  Parameters: {"comment"=>"hello", "id"=>"7", "review"=>{"comment"=>"hello"}}
+  [1m[36mReview Load (2.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[36mUser Load (11.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[36mReview Update (5.7ms)[0m  [1m[33mUPDATE "reviews" SET "comment" = $1, "updated_at" = $2 WHERE "reviews"."id" = $3[0m  [["comment", "hello"], ["updated_at", "2019-12-05 15:54:54.194892"], ["id", 7]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with TrueClass (0.08ms)
+Completed 200 OK in 50ms (Views: 1.6ms | ActiveRecord: 29.1ms | Allocations: 4005)
+
+
+Started PATCH "/reviews/7" for ::1 at 2019-12-05 09:55:04 -0600
+Processing by ReviewsController#update as JSON
+  Parameters: {"comment"=>"12345", "id"=>"7", "review"=>{"comment"=>"12345"}}
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[36mReview Update (0.6ms)[0m  [1m[33mUPDATE "reviews" SET "comment" = $1, "updated_at" = $2 WHERE "reviews"."id" = $3[0m  [["comment", "12345"], ["updated_at", "2019-12-05 15:55:04.592096"], ["id", 7]]
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/reviews_controller.rb:23:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with TrueClass (0.06ms)
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 5.2ms | Allocations: 4005)
+
+
