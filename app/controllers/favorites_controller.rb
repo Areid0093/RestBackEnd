@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
 
     def index
         favorites = Favorite.all
-        render json: favorites.to_json(favorites_serializer)
+        render json: favorites.to_json
     end
 
     def show
@@ -28,7 +28,7 @@ class FavoritesController < ApplicationController
     private
 
     def favorites_params
-        params.require(:favorite).permit(:user_id, :restaurant_id, {:username => []})
+        params.require(:favorite).permit(:user_id, :restaurant_id, :name, :photo, {:username => []})
     end
 
     def favorites_serializer
