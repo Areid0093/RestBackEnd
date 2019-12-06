@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_12_02_153352) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.string "restaurant_id"
+    t.string "name"
+    t.string "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
